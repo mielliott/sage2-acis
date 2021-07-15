@@ -1,0 +1,19 @@
+[Unit]
+Description=SAGE2 server
+After=multi-user.target
+Wants=display-manager.service
+
+[Service]
+Environment=NODE_ENV=production
+Type=simple
+User=sage2
+WorkingDirectory=/home/sage2/sage2
+ExecStart=/usr/bin/node server.js -i
+Restart=on-failure
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=SAGE2
+
+[Install]
+WantedBy=multi-user.target
+
